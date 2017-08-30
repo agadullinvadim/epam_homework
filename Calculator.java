@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
  * Created by Vadim on 27.08.2017.
  */
 public class Calculator {
-    public static boolean isNumber(String s) throws NumberFormatException{
+    private static boolean isNumber(String s) throws NumberFormatException{
       try {
           Double.parseDouble(s);
           return true;
@@ -16,7 +16,7 @@ public class Calculator {
           return false;
       }
     }
-    public static boolean isNumberOfOperation(String s) throws NumberFormatException{
+    private static boolean isNumberOfOperation(String s) throws NumberFormatException{
         try {
             Integer.parseInt(s);
             return true;
@@ -54,7 +54,7 @@ public class Calculator {
 
         double num2 = Double.parseDouble(inputdata);
 
-        System.out.println("Что будем делать:Суммирование - 1, Вычитание - 2, Умножение - 3, Деление - 4 (введите номер операции): ");
+        System.out.println("Что будем делать:Суммирование - 1, Вычитание - 2, Умножение - 3, Деление - 4, Выход - 5 (введите номер операции): ");
 
         inputdata = reader.readLine();
 
@@ -66,14 +66,14 @@ public class Calculator {
 
         int numofoperation = Integer.parseInt(inputdata);
 
-        boolean check = (numofoperation < 1) | (numofoperation > 4);
+        boolean check = (numofoperation < 1) | (numofoperation > 5);
 
         while (check){
 
                 System.out.print("Неккоректный номер операции! Повторите ввод: ");
                 inputdata = reader.readLine();
                 numofoperation = Integer.parseInt(inputdata);
-                check = (numofoperation < 1) | (numofoperation > 4);
+                check = (numofoperation < 1) | (numofoperation > 5);
         }
 
 
@@ -90,6 +90,7 @@ public class Calculator {
             case 4: Divide var4 = new Divide();
                 var4.divide(num1, num2);
                 break;
+            case 5: System.exit(0);
         }
     }
 }
